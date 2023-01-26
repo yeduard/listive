@@ -1,7 +1,5 @@
 version: "3.9"
 
-name: listive-notification-service
-
 services:
   notification-api:
     build:
@@ -10,9 +8,8 @@ services:
       args:
         - BUILD_CONFIGURATION=${BUILD_CONFIGURATION:-Debug}
     networks:
-      - events-network
-    depends_on:
-      sqldb:
-        condition: service_healthy
-      rabbitmq:
-        condition: service_healthy
+      - listive-network
+
+networks:
+  listive-network:
+    name: listive-network

@@ -14,19 +14,19 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0 as build
 WORKDIR /src
 
 # Copy all needed csproj for build
-COPY ["Notification/Notification.csproj", "Notification/"]
+COPY ["Api/Api.csproj", "Api/"]
 
-RUN dotnet restore "Notification/Notification.csproj"
+RUN dotnet restore "Api/Api.csproj"
 COPY . .
-WORKDIR /src/Notification
+WORKDIR /src/Api
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet build "Notification.csproj" -c ${BUILD_CONFIGURATION} -o /app/build
+RUN dotnet build "Api.csproj" -c ${BUILD_CONFIGURATION} -o /app/build
 
 FROM build as publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "Notification.csproj" -c ${BUILD_CONFIGURATION} -o /app/publish
+RUN dotnet publish "Api.csproj" -c ${BUILD_CONFIGURATION} -o /app/publish
 
 FROM base as final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT [ "dotnet", "Notification.dll"]
+ENTRYPOINT [ "dotnet", "Api.dll"]
