@@ -1,0 +1,39 @@
+version: "3.9"
+
+name: listive-infrastructure
+
+services:
+  sqldb:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqldb
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=p@ssWord
+    ports:
+      - "5033-5033"
+    networks:
+      - listive-network
+    healthcheck:
+      test: /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P "$$MSSQL_SA_PASSWORD" -Q "SELECT 1" || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+  
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmq
+    ports:
+      - "15672-15672"
+    networks:
+      - listive-network
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+networks:
+  listive-network:
+    name: listive-network

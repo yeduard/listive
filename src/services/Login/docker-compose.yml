@@ -1,0 +1,18 @@
+version: "3.9"
+
+name: listive-login-service
+
+services:
+  login-api:
+    build:
+      context: .
+      dockerfile: Api/Dockerfile
+      args:
+        - BUILD_CONFIGURATION=${BUILD_CONFIGURATION:-Debug}
+    networks:
+      - events-network
+    depends_on:
+      sqldb:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy

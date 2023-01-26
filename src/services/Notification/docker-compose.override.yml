@@ -1,0 +1,9 @@
+version: "3.9"
+
+services:
+  notification-api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
+    ports:
+      - "5002:5000"
