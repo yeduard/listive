@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{9E5D836E-887B-4025-8B84-39ACDF13EEA2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Login.Api", "Login.Api\Login.Api.csproj", "{9E5D836E-887B-4025-8B84-39ACDF13EEA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Login.Database", "Login.Database\Login.Database.csproj", "{487C04EB-3F3F-4ABA-A5BD-7DF1F54507F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Listive.Messages", "Listive.Messages\Listive.Messages.csproj", "{E85DD809-1987-43C2-ABE0-5188B6B27FB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +22,13 @@ Global
 		{9E5D836E-887B-4025-8B84-39ACDF13EEA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E5D836E-887B-4025-8B84-39ACDF13EEA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E5D836E-887B-4025-8B84-39ACDF13EEA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{487C04EB-3F3F-4ABA-A5BD-7DF1F54507F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{487C04EB-3F3F-4ABA-A5BD-7DF1F54507F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{487C04EB-3F3F-4ABA-A5BD-7DF1F54507F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{487C04EB-3F3F-4ABA-A5BD-7DF1F54507F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E85DD809-1987-43C2-ABE0-5188B6B27FB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E85DD809-1987-43C2-ABE0-5188B6B27FB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E85DD809-1987-43C2-ABE0-5188B6B27FB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E85DD809-1987-43C2-ABE0-5188B6B27FB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

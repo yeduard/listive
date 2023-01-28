@@ -14,19 +14,20 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0 as build
 WORKDIR /src
 
 # Copy all needed csproj for build
-COPY ["Api/Api.csproj", "Api/"]
+COPY ["Login.Api/Login.Api.csproj", "Login.Api/"]
+COPY ["Login.Database/Login.Database.csproj", "Login.Database/"]
 
-RUN dotnet restore "Api/Api.csproj"
+RUN dotnet restore "Login.Api/Login.Api.csproj"
 COPY . .
-WORKDIR /src/Api
+WORKDIR "/src/Login.Api"
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet build "Api.csproj" -c ${BUILD_CONFIGURATION} -o /app/build
+RUN dotnet build "Login.Api.csproj" -c ${BUILD_CONFIGURATION} -o /app/build
 
 FROM build as publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "Api.csproj" -c ${BUILD_CONFIGURATION} -o /app/publish
+RUN dotnet publish "Login.Api.csproj" -c ${BUILD_CONFIGURATION} -o /app/publish
 
 FROM base as final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT [ "dotnet", "Api.dll"]
+ENTRYPOINT [ "dotnet", "Login.Api.dll"]

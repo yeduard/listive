@@ -10,7 +10,7 @@ services:
       - ACCEPT_EULA=Y
       - MSSQL_SA_PASSWORD=p@ssWord
     ports:
-      - "5033-5033"
+      - "1433:1433"
     networks:
       - listive-network
     healthcheck:
@@ -24,7 +24,8 @@ services:
     image: rabbitmq:3-management-alpine
     container_name: rabbitmq
     ports:
-      - "15672-15672"
+      - "15672:15672"
+      - "5672:5672"
     networks:
       - listive-network
     healthcheck:
@@ -37,3 +38,4 @@ services:
 networks:
   listive-network:
     name: listive-network
+    external: false

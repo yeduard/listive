@@ -4,7 +4,7 @@ services:
   login-api:
     build:
       context: .
-      dockerfile: Api/Dockerfile
+      dockerfile: Login.Api/Dockerfile
       args:
         - BUILD_CONFIGURATION=${BUILD_CONFIGURATION:-Debug}
     networks:
