@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  login-api:
+    build:
+      context: .
+      dockerfile: Logins.Api/Dockerfile
+      args:
+        - BUILD_CONFIGURATION=${BUILD_CONFIGURATION:-Debug}
+    networks:
+      - listive-network
+
+networks:
+  listive-network:
+    name: listive-network
