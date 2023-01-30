@@ -17,3 +17,6 @@ Starts all the services
 
 ## Test the application
 Load the `listive_postman_collection.json` file into your postman.
+
+In order to get notifications, you just have to call the `login` service with a wrong password.
+Default password for `rootie@root.com` is `Pass@word`
