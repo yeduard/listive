@@ -7,15 +7,14 @@ YELLOW='\033[0;33m'
 up()
 {
     echo "${GREEN}Starting $1..."
-    docker compose -f $1 up -d
-    echo ""
+    (cd $1 ; docker compose up -d)
 }
 
 down()
 {
     echo "${RED}Stopping $1"
     # docker compose -f $1 down --remove-orphans
-    docker compose -f $1 down
+    (cd $1 ; docker compose down)
 }
 
 echo "${GREEN}Starting services..."
@@ -37,15 +36,15 @@ do
 
     case $@ in 
         up)
-            up $SERVICE_PATH/docker-compose.yml
+            up $SERVICE_PATH
             ;;
         
         down)
-            down $SERVICE_PATH/docker-compose.yml
+            down $SERVICE_PATH
             ;;
         
         *)
-            up $SERVICE_PATH/docker-compose.yml
+            up $SERVICE_PATH
             ;;
     esac
     
