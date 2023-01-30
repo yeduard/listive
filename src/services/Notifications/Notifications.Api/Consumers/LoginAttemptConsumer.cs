@@ -19,6 +19,6 @@ public class LoginAttemptConsumer : IConsumer<LoginAttemptEvent>
     {
         _logger.LogWarning("A new login was attempted for {Email} with {IpAddress} ip", context.Message.Email, context.Message.IpAddress);
 
-        await _notificationService.GenerateLoginAttemptNotification(context.Message.Email, context.Message.IpAddress);
+        await _notificationService.GenerateLoginAttemptNotificationAsync(context.Message.Email, context.Message.IpAddress);
     }
 }

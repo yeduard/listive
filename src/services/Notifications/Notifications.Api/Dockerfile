@@ -15,10 +15,11 @@ WORKDIR /src
 
 # Copy all needed csproj for build
 COPY ["Notifications.Api/Notifications.Api.csproj", "Notifications.Api/"]
+COPY ["Notifications.Database/Notifications.Database.csproj", "Notifications.Database/"]
 
 RUN dotnet restore "Notifications.Api/Notifications.Api.csproj"
 COPY . .
-WORKDIR /src/Api
+WORKDIR "/src/Notifications.Api"
 ARG BUILD_CONFIGURATION=Release
 RUN dotnet build "Notifications.Api.csproj" -c ${BUILD_CONFIGURATION} -o /app/build
 

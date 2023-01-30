@@ -2,15 +2,15 @@
 
 public class NotificationClassification
 {
-    public Guid NotificationClassificationId { get; protected set; }
+    public Guid Id { get; set; }
 
-    public string Name { get; protected set; }
+    public string Name { get; set; }
 
-    public DateTimeOffset CreatedAt { get; protected set; }
-    public DateTimeOffset UpdatedAt { get; protected set; }
-    public DateTimeOffset DeletedAt { get; protected set; }
+    public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
+    public DateTimeOffset UpdatedAt { get; set; } = DateTimeOffset.UtcNow;
+    public DateTimeOffset? DeletedAt { get; set; }
 
-    protected NotificationClassification() { }
+    public NotificationClassification() { }
 
     public NotificationClassification(string name)
     {

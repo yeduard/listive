@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Notifications.Database.Configurations;
 using Notifications.Database.Models;
 
 namespace Notifications.Database;
@@ -13,6 +14,9 @@ public class NotificationsContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
+        builder.ApplyConfiguration(new NotificationClassificationConfiguration());
+        builder.ApplyConfiguration(new NotificationConfiguration());
+
         base.OnModelCreating(builder);
     }
 }

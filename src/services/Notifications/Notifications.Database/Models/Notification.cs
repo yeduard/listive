@@ -1,18 +1,19 @@
-﻿using System;
-namespace Notifications.Database.Models;
+﻿namespace Notifications.Database.Models;
 
 public class Notification
 {
-    public Guid NotificationId { get; protected set; }
+    public Guid Id { get; set; }
 
-    public string Title { get; protected set; }
-    public string Message { get; protected set; }
-    public string Email { get; protected set; }
+    public string Title { get; set; }
+    public string Message { get; set; }
+    public string Email { get; set; }
+
+    public Guid ClassificationId { get; set; }
     public NotificationClassification Classification { get; protected set; }
 
-    public DateTimeOffset CreatedAt { get; protected set; }
-    public DateTimeOffset UpdatedAt { get; protected set; }
-    public DateTimeOffset DeletedAt { get; protected set; }
+    public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
+    public DateTimeOffset UpdatedAt { get; set; } = DateTimeOffset.UtcNow;
+    public DateTimeOffset? DeletedAt { get; set; }
 
     protected Notification() { }
 

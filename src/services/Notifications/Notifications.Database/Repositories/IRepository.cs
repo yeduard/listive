@@ -17,7 +17,7 @@ public interface IRepository<TEntity> where TEntity : class
 
 public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
 {
-    private readonly NotificationsContext _context;
+    protected readonly NotificationsContext _context;
 
     public Repository(NotificationsContext context)
     {

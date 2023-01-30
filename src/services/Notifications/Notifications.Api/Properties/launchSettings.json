@@ -16,7 +16,7 @@
       "applicationUrl": "http://localhost:5002",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "ConnectionStrings__SqlServer": "Server=localhost;Initial Catalog=Login;User ID=sa;Password=p@ssWord;TrustServerCertificate=true;",
+        "ConnectionStrings__SqlServer": "Server=localhost;Initial Catalog=Notification;User ID=sa;Password=p@ssWord;TrustServerCertificate=true;",
         "RabbitMQ__Host": "localhost"
       }
     },

@@ -1,11 +1,13 @@
-﻿using Notifications.Database;
+﻿using System.Drawing;
+using Notifications.Database;
 using Notifications.Database.Models;
 
 namespace Notifications.Api.Services;
 
 public interface INotificationService
 {
-    Task GenerateLoginAttemptNotification(string email, string ipAddress);
+    Task GenerateLoginAttemptNotificationAsync(string email, string ipAddress);
+    Task<IEnumerable<Notification>> GetNotificationsPagedAsync(int page, int size);
 }
 
 public class NotificationService : INotificationService
@@ -19,7 +21,7 @@ public class NotificationService : INotificationService
         _unitOfWork = unitOfWork;
     }
 
-    public async Task GenerateLoginAttemptNotification(string email, string ipAddress)
+    public async Task GenerateLoginAttemptNotificationAsync(string email, string ipAddress)
     {
         _logger.LogInformation("Generating a new LoginAttemptNotification for {Email} with {IpAddress}", email, ipAddress);
 
@@ -46,4 +48,7 @@ public class NotificationService : INotificationService
             _logger.LogError("There was an error saving the new notification", ex);
         }
     }
+
+    public async Task<IEnumerable<Notification>> GetNotificationsPagedAsync(int page, int size)
+        => await _unitOfWork.Notifications.GetNotificationsPagedAsync(page, size);
 }
